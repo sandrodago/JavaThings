@@ -1,0 +1,18 @@
+Alex D'Agostino - 26316417
+Assignment 3 - MapReduce, Hadoop, WordCount and Sort
+
+
+To begin, I ran my java program using the following command:
+
+hadoop jar wc.jar WordCount /user/cloudera/mydata/tale_of_two_cities.txt /user/cloudera/mydata/output/run3
+
+As you will see in my java file, in the Mapper section, I filter the words by stripping any non-characters from the word, as well as not taking into consideration any word less than 3 characters long. Once it passes that filter the words are tallied.
+
+Once the application is finished, you can see the top 'N' words by running the following command:
+
+hadoop fs -cat /user/cloudera/mydata/output/run3/part-r-00000 | sort -n -k2 -r | head -n 10.
+
+the sort command, sorts through the list of words, using numbers as the type in colomn 2, and then doing it in reverse.
+Followed by the head command which in this case gies the top '10' lines of the file.
+
+In my example, I chose to use the book "A Tale of Two Cities".  You can see the top 10 words in the Results.text file I provided.
